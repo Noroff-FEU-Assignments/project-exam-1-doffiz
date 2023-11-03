@@ -1,4 +1,4 @@
-*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) { all: unset; display: revert; } 
+*:where(:not(html, iframe, canvas, img, svg, video, audio, dialog):not(svg *, symbol *)) { all: unset; display: revert; } 
 *,
 *::before,
 *::after { box-sizing: border-box; } 
