@@ -313,7 +313,7 @@ footer h2 {
     width: 100%;
   }
 
-  button:focus-visible { outline: 2px solid red; }
+  .button:focus-visible { outline: 2px solid red; }
 
 form label {
     color: var(--headingcolor);
