@@ -3,7 +3,7 @@ export function createPostCard(post) {
     const card = document.createElement("div");
     card.classList.add("card", "flex", "column", "flex1");
     const img = document.createElement("img");
-    img.setAttribute("src", post._embedded["wp:featuredmedia"][0].source_url);
+    img.setAttribute("src", post._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
     img.setAttribute("alt", post._embedded["wp:featuredmedia"][0].alt_text);
     const cardContent = document.createElement("div");
     cardContent.classList.add("card-mid", "flex", "column", "gap1", "justify-between", "flex1");
