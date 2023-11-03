@@ -330,6 +330,17 @@ form label {
 .grid a, #hero-featured a, #recentcarousel a {
     text-decoration: none;
 }
+#post, #content, .no-comments {
+    color: var(--headingcolor);
+}
+.comment {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--cardbg);
+    box-shadow: var(--boxshadow);
+    outline: var(--outline);
+    color: var(--headingcolor);
+}
 
 
 @media (width < 1020px) {

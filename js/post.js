@@ -3,6 +3,8 @@ import { setTitle, setMetaDescription } from "./functions.js";
 
 const postContainer = document.getElementById("post");
 const content = document.getElementById("content");
+const submitButton = document.getElementById("submit-button");
+
 function getPostIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('id');
@@ -37,11 +39,8 @@ function getPostIdFromURL() {
     const authorImg = document.createElement("img");
     authorImg.classList.add("author-img");
     authorImg.src = post._embedded.author[0].avatar_urls["96"];
-    const authorTitle = document.createElement("h2");
-    authorTitle.innerHTML = "who?";
     const authorName = document.createElement("h3");
     authorName.innerHTML = post._embedded.author[0].name;
-    authorDiv.appendChild(authorTitle);
     authorInnerBox.appendChild(authorName);
     authorInnerBox.appendChild(authorImg);
     authorDiv.appendChild(authorInnerBox);   
@@ -65,15 +64,83 @@ function getPostIdFromURL() {
     postContainer.appendChild(leftCol);
     postContainer.appendChild(rightCol);
     content.innerHTML = post.content.rendered;
-
   }
   
+  function fetchComments() {
+    const postId = getPostIdFromURL();
+    const apiUrl = `${API_URL}/comments?post=${postId}`;
+    
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data.length === 0) {
+        const noComments = document.createElement("p");
+        noComments.innerHTML = "No comments yet... Be the first?";
+        noComments.classList.add("no-comments");
+        document.getElementById("comment-container").appendChild(noComments);
+      } else {
+      displayComments(data)
+  }})
+    .catch(error => console.log(error));
+  }
+  function displayComments(comments) {
+    const commentsContainer = document.getElementById("comment-container");
+    commentsContainer.classList.add("flex", "column", "gap2");
+    comments.forEach(comment => {
+      const commentElement = document.createElement("div");
+      commentElement.classList.add("comment");
+      const commentAuthor = document.createElement("h3");
+      commentAuthor.innerHTML = comment.author_name;
+      const commentDate = document.createElement("p");
+      commentDate.innerHTML = new Date(comment.date).toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+      const commentContent = document.createElement("p");
+      commentContent.innerHTML = comment.content.rendered;
+      commentElement.appendChild(commentAuthor);
+      commentElement.appendChild(commentDate);
+      commentElement.appendChild(commentContent);
+      commentsContainer.appendChild(commentElement);
+    });
+  }
   function fetchAndDisplayPost() {
     const postId = getPostIdFromURL();
     if (postId) {
       fetchSinglePost(postId);
     }
   }
+  function addComment() {
+    const postId = getPostIdFromURL();
+    const commentAuthor = document.getElementById("comment-author").value;
+    const commentContent = document.getElementById("comment-content").value;
+    const commentData = {
+      post: postId,
+      author_name: commentAuthor,
+      content: commentContent,
+    };
+    const apiUrl = `${API_URL}/comments?post=${postId}}`;
+    const options = {
+      method: "POST",
+      body: JSON.stringify(commentData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(apiUrl, options)
+      .then(response => response.json())
+      .then(data => {
+        location.reload();
+      })
+      .catch(error => console.log(error));
+  }
   
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+    addComment();
+  });
+
   fetchAndDisplayPost();
+  fetchComments();
   
