@@ -316,7 +316,7 @@ footer h2 {
     width: 100%;
   }
 
-  .button:hover { background-color: var(--headingcolor); color: var(--lightbg)
+  .button:hover { background-color: var(--headingcolor); color: var(--floatingheaderbg)
 }
   .button:focus-visible { outline: 2px solid red; }
 
