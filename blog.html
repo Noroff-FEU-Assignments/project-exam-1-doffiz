@@ -21,9 +21,9 @@
     <header class="page-width">
         <div class="flex align-center justify-between floating-header">
 
-            <a class="flex align-center logo" href="index.html" title="To the Home Page"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="248.000000pt" height="71.000000pt" viewBox="0 0 248.000000 71.000000"
-                    preserveAspectRatio="xMidYMid meet">
+            <a class="flex align-center logo" href="index.html" title="To the Home Page"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="248.000000pt" height="71.000000pt"
+                    viewBox="0 0 248.000000 71.000000" preserveAspectRatio="xMidYMid meet">
 
                     <g transform="translate(0.000000,71.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                         <path d="M1067 693 c-15 -15 -5 -32 21 -35 l27 -3 5 -235 5 -235 50 -13 c106
@@ -88,16 +88,16 @@
 
                 <div class="flex flex2 gap2 column align-start">
                     <div class="floating-header option flex column gap1">
-                        <label for="sort-dropdown"><h2>Sort</h2></label>
+                        <h2><label for="sort-dropdown">Sort</label></h2>
                         <select id="sort-dropdown">
                             <option value="date:desc">Newest</option>
                             <option value="date:asc">Oldest</option>
-                          </select>
+                        </select>
                     </div>
                     <div class="floating-header option flex column gap1">
-                        <label for="search-input">
-                            <h2>Search</h2>
-                        </label>
+
+                        <h2> <label for="search-input">Search</label></h2>
+
                         <div class="flex column gap1">
                             <input type="text" id="search-input" placeholder="Search posts">
                             <button class="button searchbutton" id="search-button">Search</button>
@@ -106,15 +106,19 @@
                 </div>
                 <div class="grid flex6 gap2" id="postgrid">
                     <div class="flex align-center justify-center">
-                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                </div>
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="flex">
-            <div class="flex2 filler"></div>
-            <button class="button flex6 text-center" id="load-more">Show more</button>
+                <div class="flex2 filler"></div>
+                <button class="button flex6 text-center" id="load-more">Show more</button>
 
-            </div>
             </div>
         </section>
     </main>
