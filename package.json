@@ -1,0 +1,23 @@
+{
+  "name": "project-exam-1-doffiz",
+  "version": "1.0.0",
+  "description": "To put into practice the skills learned over your first year of studies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noroff-FEU-Assignments/project-exam-1-doffiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Noroff-FEU-Assignments/project-exam-1-doffiz/issues"
+  },
+  "homepage": "https://github.com/Noroff-FEU-Assignments/project-exam-1-doffiz#readme",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}
