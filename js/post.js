@@ -15,7 +15,6 @@ function getPostIdFromURL() {
       .then(response => response.json())
       .then(data => {
         displaySinglePost(data);
-        console.log(data);
       })
       .catch(error => console.log(error));
   }
