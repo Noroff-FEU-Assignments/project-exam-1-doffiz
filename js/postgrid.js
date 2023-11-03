@@ -1,5 +1,5 @@
 import { API_URL } from "./config.js";
-import { createPostCard } from "./functions.js";
+import { createPostCard, setTitle } from "./functions.js";
 
 const postGrid = document.getElementById("postgrid");
 const loadMoreButton = document.getElementById("load-more");

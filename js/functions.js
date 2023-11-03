@@ -27,3 +27,11 @@ export function createPostCard(post) {
     return card;
   }
 
+export function setTitle(title) {
+    document.title = `${title} | mpblog`;
+  }
+
+  export function setMetaDescription(description) {
+    const metaDescription = document.querySelector("meta[name='description']");
+    metaDescription.setAttribute("content", description);
+  }

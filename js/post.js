@@ -1,4 +1,5 @@
 import { API_URL } from "./config.js";
+import { setTitle, setMetaDescription } from "./functions.js";
 
 const postContainer = document.getElementById("post");
 const content = document.getElementById("content");
@@ -15,6 +16,8 @@ function getPostIdFromURL() {
       .then(response => response.json())
       .then(data => {
         displaySinglePost(data);
+        setTitle(data.title.rendered);
+        setMetaDescription(data.excerpt.rendered);
       })
       .catch(error => console.log(error));
   }
