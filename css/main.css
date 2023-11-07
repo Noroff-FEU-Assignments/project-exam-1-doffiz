@@ -343,7 +343,7 @@ form label {
 }
 
 
-@media (width < 1020px) {
+@media screen and (max-width: 1020px) {
     .mob-col {
         flex-direction: column;
     }
@@ -406,8 +406,8 @@ form label {
         margin: 1rem 0;
     }
 }
+@media screen and (max-width: 680px) {
 
-@media (width < 680px) {
     #hero-featured {
         flex-direction: column;
     }
