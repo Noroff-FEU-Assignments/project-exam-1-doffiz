@@ -7,10 +7,10 @@ const subjectInput = document.getElementById("subject");
 const messageInput = document.getElementById("message");
 
 contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
   if (!isNameValid() || !isEmailValid() || !isSubjectValid() || !isMessageValid()) {
-    event.preventDefault();
-  } 
-    event.preventDefault();
+    displayError("Please fill out all the fields correctly");
+  } else {
     const formData = new FormData(contactForm);
     formData.append("your-name", nameInput.value);
     formData.append("your-email", emailInput.value);
@@ -18,25 +18,24 @@ contactForm.addEventListener("submit", (event) => {
     formData.append("your-message", messageInput.value);
 
     fetch(`${APIURL}/contact-form-7/v1/contact-forms/197/feedback/`, {
-        method: "POST",
-        body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            contactForm.innerHTML = `<h2>Thank you for your message!</h2>`;
-        }
-        )
-        .catch(error => {
+      method: "POST",
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        contactForm.innerHTML = `<h2>Thank you for your message!</h2>`;
+      })
+      .catch(error => {
         console.log(error);
         contactForm.innerHTML = `<h2>Sorry, something went wrong!</h2>`;
-        });  
-  
+      });
+  }
 });
 
 
 function isNameValid() {
-  const name = nameInput.value.trim();
-  if (name.length < 5) {
+  if (!nameInput.validity.valid) {
+    clearError();
     displayError("Name should be more than 5 characters long");
     return false;
   }
@@ -45,10 +44,8 @@ function isNameValid() {
 }
 
 function isEmailValid() {
-  const email = emailInput.value.trim();
-//   e-mail regex
-  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  if (!email.match(emailPattern)) {
+  if (!emailInput.validity.valid) {
+    clearError();
     displayError("Invalid email address");
     return false;
   }
@@ -57,8 +54,8 @@ function isEmailValid() {
 }
 
 function isSubjectValid() {
-  const subject = subjectInput.value.trim();
-  if (subject.length < 15) {
+  if (!subjectInput.validity.valid) {
+    clearError();
     displayError("Subject should be more than 15 characters long");
     return false;
   }
@@ -67,8 +64,8 @@ function isSubjectValid() {
 }
 
 function isMessageValid() {
-  const message = messageInput.value.trim();
-  if (message.length < 25) {
+  if (!messageInput.validity.valid) {
+    clearError();
     displayError("Message content should be more than 25 characters long");
     return false;
   }
